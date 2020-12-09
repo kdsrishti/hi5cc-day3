@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>hi5cc-Day3</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/kd-styles.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<small id='text-change-color'>hi5cc</small>
+					<h2>Introduction to<br/>Creative Coding</h2>
+					<h6>day 3</h6>
+					<small>Karan Dudeja, Dec 2020</small>
+					<p class="text-muted">Srishti Manipal Institute of Art, Design and Technology<br/>
+						Interim 2020
+					</p>
+				</section>
+				
+				<section>
+					<section>
+						<h2 id="loopy-text">Loops</h2>
+						<p><small class="text-muted">Loops allow handling repetitions easily</small></p>
+						<p>2 types</p>
+						<ul>
+							<li>While</li>
+							<li>For</li>
+						</ul>
+					</section>
+					<section> 
+						<h4>While loop</h4>
+						<p><small class="text-muted">Be careful of noting the exit condition</small></p>
+						<pre><code class="lang-js" data-line-numbers="8-12" data-trim data-noescape>
+							// while loop to draw 10 circles
+							let posx = 0;
+							function setup() {
+							  createCanvas(400, 400);
+							  background(230);
+							}
+							function draw() {
+							  while (posx &lt; 10) {
+							    posx++;
+							    fill(20);
+							    circle(posx * 20, height/2, 10);
+							  }
+							}
+						</code></pre>
+						<small><a class="text-yellow" href="https://editor.p5js.org/karanDudeja/sketches/qo-VU4uuK" target="_blank">Try it here </a>
+							<a class="text-green" href="https://p5js.org/reference/#/p5/while" target="_blank"> &nbsp;&nbsp; 📒While Loop</a></small>
+					</section> 
+					<section> 
+						<h4>For loop</h4>
+						<p><small class="text-muted">for(initialise ; test condition ; final expression){}</small></p>
+						<pre><code class="lang-js" data-line-numbers="8-10" data-trim data-noescape>
+							// for loop to make 10 vertical dots 
+							function setup(){
+							  createCanvas(400, 400);
+							}
+							function draw(){
+							  background(255,160,20);
+							  fill(20);
+							  for(let i = 0 ; i &lt; 9 ; i++){
+							   circle(width/2, 25 + i * 40, 20);
+							  }
+							}
+						</code></pre>
+						<small><a class="text-yellow" href="https://editor.p5js.org/karanDudeja/sketches/D6CmyYnuJ" target="_blank">Try it here</a>
+							<a class="text-green" href="https://p5js.org/reference/#/p5/for" target="_blank"> &nbsp;&nbsp; 📒For Loop</a></small>
+					</section>
+					<section> 
+						<h4>Nested For loop</h4>
+						<p><small class="text-muted">can be tried out to make a 2D grid</small></p>
+						<pre><code class="lang-js" data-line-numbers="10-14" data-trim data-noescape>
+							//loops to make 100 dots 
+							function setup(){
+							  createCanvas(400, 400);
+							}
+							function draw() {
+							 background(220);
+							 fill(245, 35, 90);
+							 noStroke();
+							 //translate(20,20);
+							 for(let i=0 ; i &lt; 10 ; i++){
+							  for(let j=0 ; j &lt; 10 ; j++){
+							   circle(width/10*i, height/10*j, 5);
+							  }
+							 }
+							}
+						</code></pre>
+						<small><a class="text-yellow" href="https://editor.p5js.org/karanDudeja/sketches/8Sg27m5tC" target="_blank">Try it here</a>
+							</small>
+					</section>
+					<section>
+						<h2>Transformation</h2>
+						<p><small class="text-muted">For transformation of the shapes in your sketch</small></p>
+						<p>Common types</p>						
+						<ul>
+							<li>Translate</li>
+							<li>Rotate</li>
+						</ul>						
+						<br/><br/>
+						<small><a class="text-white" href="https://p5js.org/reference/#group-Transform" target="_blank">📒 Transform</a></small>
+					</section>
+					<section>
+						<h4>Translate</h4> 
+						<p><small class="text-muted">Controls location displacement within the sketch. It is reset in every draw call.</small></p>
+						<pre><code class="lang-js" data-line-numbers="7,9" data-trim data-noescape>
+							// translating on the canvas 
+							function draw(){
+							 background(110, 0, 0);
+							 fill(0, 190, 255);
+							 stroke(255);
+							 circle(30, 30, 30);
+							 translate(50, 50);
+							 circle(30, 30, 30);
+							 translate(50, 50);
+							 circle(30, 30, 30);
+							}
+						</code></pre>
+						<br/><br/>
+						<small><a class="text-white" href="https://p5js.org/reference/#/p5/translate" target="_blank">📒 Translate</a>
+							<a class="text-green" href="https://editor.p5js.org/karanDudeja/sketches/SYlj4atIn" target="_blank"> &nbsp;&nbsp;&nbsp; Translate without Push-Pop</a></small>
+					</section>
+					<section>
+						<h4>Rotate</h4> 
+						<p><small class="text-muted">Angles specified in Radians or Degrees. Positive numbers rotate shape clockwise.</small></p>
+						<pre><code class="lang-js" data-line-numbers="3" data-trim data-noescape>
+						 push(); // Start a new drawing state. Discussed ahead						  
+						  translate(50, 0);
+						  rotate(PI/4);
+						  fill(204, 153, 0);
+						  square(0, 0, 100);
+						 pop(); // Restore original state. Discussed ahead
+						</code></pre>
+						<br/>
+						<small><a class="text-white" href="https://p5js.org/reference/#/p5/rotate" target="_blank">📒Rotate</a>
+							<a class="text-white" href="https://betterexplained.com/articles/intuitive-guide-to-angles-degrees-and-radians/#:~:text=Radians%20measure%20angles%20by%20distance%20traveled.&text=or%20angle%20in%20radians%20(theta,*%20pi)%20or%2057.3%20degrees." target="_blank"> &nbsp;&nbsp;&nbsp; 📒Radians vs Degrees</a>
+							<a class="text-green" href="https://editor.p5js.org/karanDudeja/sketches/gPzh8k9l6" target="_blank"> &nbsp;&nbsp;&nbsp; Rotate with Push-Pop</a></small>
+					</section>
+					<section>
+						<h2>Push</h2> 
+						<p><small class="text-muted">Push saves your current drawing styles. Used always with Pop</small></p>
+						<pre><code class="lang-js" data-line-numbers data-trim data-noescape>
+						 push(); // Start a new drawing state
+						  strokeWeight(1);
+						  fill(204, 153, 0);
+						  translate(50, 0);
+						  ellipse(0, 50, 33, 33);
+						 pop(); // Restore original state
+						</code></pre>
+						<br/>
+						<small><a class="text-white" href="https://p5js.org/reference/#/p5/push" target="_blank">📒Push</a></small>
+					</section>
+					<section>
+						<h2>Pop</h2> 
+						<p><small class="text-muted">Pop removes the current drawing styles. Used always with Push</small></p>
+						<pre><code class="lang-js" data-line-numbers data-trim data-noescape>
+						 push(); // Start a new drawing state
+						  strokeWeight(1);
+						  fill(204, 153, 0);
+						  translate(50, 0);
+						  ellipse(0, 50, 33, 33);
+						 pop(); // Restore original state
+						</code></pre>
+						<br/>
+						<small><a class="text-white" href="https://p5js.org/reference/#/p5/pop" target="_blank">📒Pop</a></small>
+					</section>					
+					
+					
+				</section>
+				<section>
+					<h3>⛹️<br/>Activity 1.3</h3>
+					<p><small class="text-muted">Submission details on the Blog</small></p>
+					<small><p>Make patterns on <span class="text-pink"><strong>SIX</strong></span> canvases with dimensions 400 x 600.<br/>Animation is optional.</p>
+					<img src="imgs/pattern1.gif" width="300" height="auto" >
+					&nbsp;
+					<img src="imgs/pattern2.gif" width="300" height="auto" >
+					</small>
+					<p class="text-more-muted">📒 http://www.lowgif.com/view.html ,<br/> https://www.figma.com/blog/how-a-designer-makes-background-patterns-to-push-her-creativity/</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<script src="js/kd-script.js"></script>
+	</body>
+</html>
